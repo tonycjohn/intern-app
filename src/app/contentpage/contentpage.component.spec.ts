@@ -8,6 +8,7 @@ import { CONTENTS } from './mock-content';
 
 describe('ContentpageComponent', () => {
   let component: ContentpageComponent;
+  let contentPage: ContentpageComponent;
   let fixture: ComponentFixture<ContentpageComponent>;
   let service: InternsService;
   let spy: any;
@@ -24,6 +25,7 @@ describe('ContentpageComponent', () => {
     fixture = TestBed.createComponent(ContentpageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    contentPage = new ContentpageComponent(service);
   });
 
   it('should create', () => {
@@ -49,9 +51,12 @@ describe('ContentpageComponent', () => {
       }];
 
     spy = spyOn(service, 'getInterns').and.returnValue(of(mockResponse));
-    let response;
-    service.getInterns().subscribe(res => {response = res;});
-    expect(response).toEqual(mockResponse);
+    //let response;
+    //service.getInterns().subscribe(res => {response = res; });
+    //expect(response).toEqual(mockResponse);
+    contentPage.getInterns();
+    expect(contentPage.interns).toEqual(mockResponse);
     expect(service.getInterns).toHaveBeenCalled();
+
   });
 });
