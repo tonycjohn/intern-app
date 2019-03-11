@@ -1,0 +1,7 @@
+<h2>{{title}}</h2>
+<ul class="contents">
+  <li *ngFor="let intern of interns" >
+    <span><img src="{{intern.imageUrl}}" height="300" width="500" alt="image here"></span><br>{{intern.article}}
+      <!--<img src="/assets/Activity.png" height="200" width="200" alt="image here">-->
+  </li>
+</ul>
